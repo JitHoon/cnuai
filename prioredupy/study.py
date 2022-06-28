@@ -63,7 +63,7 @@ names = ['철수', '영희', '영수']
 for i, name in enumerate(names):
     print('{}번: {}'.format(i + 1, name))
 
-
+'''
 # Module
 def get_web(url):
     """URL을 넣으면 HTML을 반환하는 함수"""
@@ -77,5 +77,22 @@ def get_web(url):
 url = input('웹 페이지 주소?')
 content = get_web(url)
 print(content)
+'''
 
 # Dictionary
+wintable = {
+    '가위': '보',
+    '바위': '가위',
+    '보': '바위',
+}
+
+for a in wintable.items():
+    print('{}는 {}를 이김'.format(*a))
+
+# packing, unpacking
+c = (3, 4)
+d, e = c        # unpacking
+f = d, e        # packing
+
+d, e = e, d     # 값 서로 바꾸기
+print(d, e)
