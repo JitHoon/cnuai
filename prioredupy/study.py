@@ -1,7 +1,7 @@
 # 변수
 from datetime import datetime
 from math import remainder
-
+from urllib import response
 
 identity = 'identity'
 print('변수', identity, '사용하기')
@@ -56,3 +56,26 @@ n = 5
 
 if n in list1:
     print('{}가 {}에 있다.'.format(n, list1))
+
+# 반복문
+names = ['철수', '영희', '영수']
+
+for i, name in enumerate(names):
+    print('{}번: {}'.format(i + 1, name))
+
+
+# Module
+def get_web(url):
+    """URL을 넣으면 HTML을 반환하는 함수"""
+    import urllib.request
+    response = urllib.request.urlopen(url)
+    data = response.read()
+    decoded = data.decode('utf-8')
+    return decoded
+
+
+url = input('웹 페이지 주소?')
+content = get_web(url)
+print(content)
+
+# Dictionary
