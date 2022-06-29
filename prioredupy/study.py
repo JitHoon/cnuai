@@ -96,3 +96,45 @@ f = d, e        # packing
 
 d, e = e, d     # 값 서로 바꾸기
 print(d, e)
+
+# while, break, continue
+selected = None
+
+while selected not in ['가위', '바위', '보']:
+    selected = input('가위, 바위, 보, n 중에 선택하세요 : ')
+
+    if selected == 'n':
+        break
+
+print(selected)
+
+list = range(4)
+
+
+for i in list:
+    if i % 2 == 0:
+        continue
+    print(i)
+
+# try, except
+
+# 에러 관리
+# 에러 이름을 알 때
+
+
+def errorfunc(list, index):
+    try:
+        print(list.pop(index))
+    except IndexError:
+        print('{} index를 가져올 수 없습니다.'.format(index))
+
+
+errorfunc([1, 2, 3], 5)
+
+# 에러 이름을 모를 때
+try:
+    a = 5
+    b = 0
+    c = a / b
+except Exception as a:
+    print('다음과 같은 에러가 발생했습니다: {}'.format(a))
