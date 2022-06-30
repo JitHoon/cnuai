@@ -89,6 +89,19 @@ wintable = {
 for a in wintable.items():
     print('{}는 {}를 이김'.format(*a))
 
+d = {}
+d['a'] = 1
+print(d)
+
+1 in d    # False
+'a' in d  # True
+
+# 형변환
+str(1)
+int('1')
+list({1, 2, 3})
+set([1, 2, 3])
+
 # packing, unpacking
 c = (3, 4)
 d, e = c        # unpacking
@@ -116,6 +129,17 @@ for i in list:
         continue
     print(i)
 
+money = 0
+salary = 2000_0000
+year = 0
+
+while money < 5_0000_0000:
+    money = money + salary
+    year = year + 1
+    salary = salary * 1.1
+
+print(year)
+
 # try, except
 
 # 에러 관리
@@ -132,9 +156,136 @@ def errorfunc(list, index):
 errorfunc([1, 2, 3], 5)
 
 # 에러 이름을 모를 때
-try:
+'''try:
     a = 5
     b = 0
     c = a / b
 except Exception as a:
     print('다음과 같은 에러가 발생했습니다: {}'.format(a))
+'''
+
+# slice
+list1 = [0, 1, 2, 3, 4, 5]
+list1[1:4] = [11, 22, 33]
+
+list2 = [0, 1, 2, 3, 4, 5]
+del list2[1:3]
+
+print("list1 : {}, list2 : {}".format(list1, list2))
+
+# List Comprehension
+list1 = [i*i for i in range(1, 11)]  # [ 계산식 for문 ]`
+list2 = [i*i for i in range(1, 11) if i % 2 == 0]  # [ 계산식 for문 조건문 ]`
+list3 = [(x, y) for x in range(3) for y in range(3)]  # [ 계산식 for문 for문 ]`
+
+print(list1)
+print(list2)
+print(list3)
+
+# Dictionary Comprehension
+
+scores = [100, 89, 75]
+students = ['지훈', '짓훈', '징훈']
+
+
+dic1 = {"{}".format(number): scores for scores, number in enumerate(students)}
+
+dic2 = {student: score for student, score in zip(students, scores)}
+
+print(dic1)
+print(dic2)
+
+# 날짜, 시간 함수 다루기
+'''
+
+
+def days_until_christmas():
+    christmas_2030 = datetime.datetime(2030, 12, 25)
+    days = christmas_2030 - datetime.datetime.now()
+    return days.days
+
+
+print("{}일".format(days_until_christmas()))
+'''
+
+'''undred_after가 지금으로부터 100일 후,
+9시 정각을 값으로 가지는 datetime클래스의 인스턴스가 되도록 만들어 보세요. '''
+
+'''
+hundred_after = datetime.datetime.now().replace(
+    hour=9, minute=0, second=0) + datetime.timedelta(days=100)
+
+print("{}/{}/{}  {}:{}:{}".format(hundred_after.year, hundred_after.month,
+      hundred_after.day, hundred_after.hour, hundred_after.minute, hundred_after.second))
+'''
+# clsaa, inheritance
+
+
+class Animal():
+    def __init__(self, name):
+        self.name = name
+
+    def walk(self):
+        print("걷는다")
+
+    def eat(self):
+        print("먹는다")
+
+    def greet(self):
+        print("super()를 사용하여 부모 내용을 추가하여 {}이/가 인사한다".format(self.name))
+
+
+class Human(Animal):
+    def __init__(self, name, hand):
+        super().__init__(name)  # 부모클래스의 __init__ 메소드 호출
+        self.hand = hand
+
+    def wave(self):
+        print("{}을 흔들면서".format(self.hand))
+
+    def greet(self):
+        self.wave()
+        super().greet()
+
+
+class Dog(Animal):
+
+    def wag(self):
+        print("꼬리를 흔든다")
+
+    def greet(self):
+        self.wag()
+
+
+person = Human("사람", "오른손")
+person.greet()
+
+dog = Dog("강아지")
+
+person.walk()
+person.eat()
+person.wave()
+dog.walk()
+dog.eat()
+dog.wag()
+
+# override (부모의 greet를 출력하지 않고 본인의 greet를 덮어씀)
+person.greet()
+dog.greet()
+
+
+# 사용자 예외
+
+
+class PasswordNotMatched(Exception):
+    print("Exception을 상속 받는 BadUserName 클래스이며 용도는 error 예외 입니다.")
+
+
+def sign_up():
+    print("회원가입하는 함수")
+
+
+try:
+    sign_up()
+except PasswordNotMatched:
+    print("입력한 패스워드 불일치")
