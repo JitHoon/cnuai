@@ -289,3 +289,17 @@ try:
     sign_up()
 except PasswordNotMatched:
     print("입력한 패스워드 불일치")
+
+'''
+import pandas
+
+데이터 프레임
+
+column : 세로 데이터
+info() : 
+describe() : 특성의 분포
+
+kaggle
+데이콘
+quickdraw
+'''
