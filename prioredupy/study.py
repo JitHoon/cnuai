@@ -302,4 +302,5 @@ describe() : 특성의 분포
 kaggle
 데이콘
 quickdraw
+.
 '''
