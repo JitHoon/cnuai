@@ -1,1 +1,1 @@
-CNU SW Academy Prior Education AI Class Python!😝
+# CNU SW Academy Prior Education AI Class Python!😝
