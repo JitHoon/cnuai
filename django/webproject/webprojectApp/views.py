@@ -6,4 +6,4 @@ from django.shortcuts import render, HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello this is index App! (HTTP Response by django from webprogectApp/views.py)")
+    return HttpResponse("<h1>Hello this is index View!</h1> (HTTP Response by django from webprogectApp/views.py)")
