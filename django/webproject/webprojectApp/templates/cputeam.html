@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>django model</title>
+    </head>
+
+    <body>
+        <h1>My CPU Team</h1>
+        {% for cputeam in cputeam_list %}
+            <h3>{{cputeam.name}}, {{cputeam.studentID}} , {{cputeam.cool}}</h3>
+        {% endfor %}
+    </body>
+</html>
