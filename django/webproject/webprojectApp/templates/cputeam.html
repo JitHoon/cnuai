@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>django model</title>
+        <title>model form</title>
     </head>
 
     <body>
@@ -9,5 +9,10 @@
         {% for cputeam in cputeam_list %}
             <h3>{{cputeam.name}}, {{cputeam.studentID}} , {{cputeam.cool}}</h3>
         {% endfor %}
+
+        <form method="POST">{% csrf_token %}
+            {{CpuTeamForm.as_p}}
+            <button type="submit">Save</button>
+        </form>
     </body>
 </html>

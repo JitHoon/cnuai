@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .models import CpuTeam
+from .forms import CpuTeamForm
 
 # Create your views here.
 
@@ -15,4 +16,13 @@ def index(request):
 
 def CpuTeamModel_views(request):
     CpuTeam_All = CpuTeam.objects.all()
-    return render(request, 'CpuTeam.html', {"cputeam_list": CpuTeam_All})
+    # 만약 request가 POST 라면,
+    # POST를 바탕으로 form을 완성하고
+    # form이 유효하면 데이터를 저장
+    if request.method == "POST":
+        form = CpuTeamForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    CpuTeamForm_All = CpuTeamForm()
+    return render(request, 'CpuTeam.html', {"cputeam_list": CpuTeam_All, "CpuTeamForm": CpuTeamForm_All})
